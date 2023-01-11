@@ -22,6 +22,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -38,21 +39,42 @@
                   </Group>
               </Group>
               <EmptySpace pref="195" max="32767" attributes="0"/>
+=======
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnTelepon" alignment="0" pref="115" max="32767" attributes="0"/>
+                  <Component id="btnForum" alignment="0" pref="115" max="32767" attributes="0"/>
+                  <Component id="btnLapor" pref="115" max="32767" attributes="0"/>
+                  <Component id="btnProfil" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="229" max="32767" attributes="0"/>
+>>>>>>> 71453e3d49cb250e87ae56483655af964160e1eb
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="16" max="-2" attributes="0"/>
+=======
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="77" max="32767" attributes="0"/>
+              <Component id="btnProfil" min="-2" max="-2" attributes="0"/>
+>>>>>>> 71453e3d49cb250e87ae56483655af964160e1eb
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnLapor" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnForum" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnTelepon" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
               <EmptySpace pref="115" max="32767" attributes="0"/>
+=======
+              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+>>>>>>> 71453e3d49cb250e87ae56483655af964160e1eb
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,12 +104,22 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTeleponActionPerformed"/>
       </Events>
     </Component>
+<<<<<<< HEAD
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Halo, test "/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
+=======
+    <Component class="javax.swing.JButton" name="btnProfil">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Profile"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProfilActionPerformed"/>
+      </Events>
+>>>>>>> 71453e3d49cb250e87ae56483655af964160e1eb
     </Component>
   </SubComponents>
 </Form>

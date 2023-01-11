@@ -34,7 +34,11 @@ public class OptionMenu extends javax.swing.JInternalFrame {
         btnLapor = new javax.swing.JButton();
         btnForum = new javax.swing.JButton();
         btnTelepon = new javax.swing.JButton();
+<<<<<<< HEAD
         jLabel1 = new javax.swing.JLabel();
+=======
+        btnProfil = new javax.swing.JButton();
+>>>>>>> 71453e3d49cb250e87ae56483655af964160e1eb
 
         setTitle("Menu");
 
@@ -59,15 +63,25 @@ public class OptionMenu extends javax.swing.JInternalFrame {
             }
         });
 
+<<<<<<< HEAD
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Halo, test ");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+=======
+        btnProfil.setText("Profile");
+        btnProfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProfilActionPerformed(evt);
+            }
+        });
+>>>>>>> 71453e3d49cb250e87ae56483655af964160e1eb
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(208, 208, 208)
@@ -85,13 +99,32 @@ public class OptionMenu extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                .addGap(201, 201, 201)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTelepon, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(btnForum, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(btnLapor, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(btnProfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(229, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addComponent(btnProfil)
+>>>>>>> 71453e3d49cb250e87ae56483655af964160e1eb
                 .addGap(18, 18, 18)
                 .addComponent(btnLapor)
                 .addGap(18, 18, 18)
                 .addComponent(btnForum)
                 .addGap(18, 18, 18)
                 .addComponent(btnTelepon)
+<<<<<<< HEAD
                 .addContainerGap(115, Short.MAX_VALUE))
+=======
+                .addGap(87, 87, 87))
+>>>>>>> 71453e3d49cb250e87ae56483655af964160e1eb
         );
 
         pack();
@@ -124,10 +157,19 @@ public class OptionMenu extends javax.swing.JInternalFrame {
         this.toBack();
     }//GEN-LAST:event_btnTeleponActionPerformed
 
+    private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
+        // TODO add your handling code here:
+        ProfilePage profilePage = new ProfilePage();
+        profilePage.setVisible(true);
+        this.getDesktopPane().add(profilePage);
+        this.dispose();
+    }//GEN-LAST:event_btnProfilActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnForum;
     private javax.swing.JButton btnLapor;
+    private javax.swing.JButton btnProfil;
     private javax.swing.JButton btnTelepon;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
