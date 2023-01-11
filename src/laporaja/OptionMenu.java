@@ -12,7 +12,6 @@ package laporaja;
 public class OptionMenu extends javax.swing.JInternalFrame {
 
     Application app;
-    
     /**
      * Creates new form OptionMenu
      */
@@ -34,11 +33,8 @@ public class OptionMenu extends javax.swing.JInternalFrame {
         btnLapor = new javax.swing.JButton();
         btnForum = new javax.swing.JButton();
         btnTelepon = new javax.swing.JButton();
-<<<<<<< HEAD
-        jLabel1 = new javax.swing.JLabel();
-=======
         btnProfil = new javax.swing.JButton();
->>>>>>> 71453e3d49cb250e87ae56483655af964160e1eb
+        jLabel1 = new javax.swing.JLabel();
 
         setTitle("Menu");
 
@@ -63,68 +59,48 @@ public class OptionMenu extends javax.swing.JInternalFrame {
             }
         });
 
-<<<<<<< HEAD
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Halo, test ");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-=======
         btnProfil.setText("Profile");
         btnProfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProfilActionPerformed(evt);
             }
         });
->>>>>>> 71453e3d49cb250e87ae56483655af964160e1eb
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Halo, Test");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnForum, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLapor, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(201, 201, 201)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnTelepon, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(btnForum, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(btnLapor, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(btnProfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(195, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-=======
-                .addGap(201, 201, 201)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnTelepon, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                    .addComponent(btnForum, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                    .addComponent(btnLapor, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                    .addComponent(btnProfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(229, Short.MAX_VALUE))
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnProfil)
->>>>>>> 71453e3d49cb250e87ae56483655af964160e1eb
                 .addGap(18, 18, 18)
                 .addComponent(btnLapor)
                 .addGap(18, 18, 18)
                 .addComponent(btnForum)
                 .addGap(18, 18, 18)
                 .addComponent(btnTelepon)
-<<<<<<< HEAD
-                .addContainerGap(115, Short.MAX_VALUE))
-=======
                 .addGap(87, 87, 87))
->>>>>>> 71453e3d49cb250e87ae56483655af964160e1eb
         );
 
         pack();
@@ -134,27 +110,25 @@ public class OptionMenu extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         LaporForm laporForm = new LaporForm();
         laporForm.setVisible(true);
-        laporForm.toFront();
         this.getDesktopPane().add(laporForm);
-        this.toBack();
+        this.dispose();
+        
     }//GEN-LAST:event_btnLaporActionPerformed
 
     private void btnForumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForumActionPerformed
         // TODO add your handling code here:
         Forum forum = new Forum(app);
         forum.setVisible(true);
-        forum.toFront();
         this.getDesktopPane().add(forum);
-        this.toBack();
+        this.dispose();
     }//GEN-LAST:event_btnForumActionPerformed
 
     private void btnTeleponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeleponActionPerformed
         // TODO add your handling code here:
-        Telepon telepon = new Telepon(app);
-        telepon.setVisible(true);
-        telepon.toFront();
-        this.getDesktopPane().add(telepon);
-        this.toBack();
+        TeleponForm teleponForm = new TeleponForm();
+        teleponForm.setVisible(true);
+        this.getDesktopPane().add(teleponForm);
+        this.dispose();
     }//GEN-LAST:event_btnTeleponActionPerformed
 
     private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
