@@ -111,8 +111,8 @@ public class OptionMenu extends javax.swing.JInternalFrame {
         LaporForm laporForm = new LaporForm();
         laporForm.setVisible(true);
         this.getDesktopPane().add(laporForm);
-        this.dispose();
-        
+        this.toBack();
+        laporForm.toFront();
     }//GEN-LAST:event_btnLaporActionPerformed
 
     private void btnForumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForumActionPerformed
@@ -120,15 +120,17 @@ public class OptionMenu extends javax.swing.JInternalFrame {
         Forum forum = new Forum(app);
         forum.setVisible(true);
         this.getDesktopPane().add(forum);
-        this.dispose();
+        this.toBack();
+        forum.toFront();
     }//GEN-LAST:event_btnForumActionPerformed
 
     private void btnTeleponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeleponActionPerformed
         // TODO add your handling code here:
-        TeleponForm teleponForm = new TeleponForm();
+        TeleponForm teleponForm = new TeleponForm(app);
         teleponForm.setVisible(true);
         this.getDesktopPane().add(teleponForm);
-        this.dispose();
+        this.toBack();
+        teleponForm.toFront();
     }//GEN-LAST:event_btnTeleponActionPerformed
 
     private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
@@ -136,7 +138,8 @@ public class OptionMenu extends javax.swing.JInternalFrame {
         ProfilePage profilePage = new ProfilePage();
         profilePage.setVisible(true);
         this.getDesktopPane().add(profilePage);
-        this.dispose();
+        this.toBack();
+        profilePage.toFront();
     }//GEN-LAST:event_btnProfilActionPerformed
 
 
