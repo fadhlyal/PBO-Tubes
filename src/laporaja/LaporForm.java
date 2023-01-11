@@ -226,13 +226,13 @@ public class LaporForm extends javax.swing.JInternalFrame {
                         jTextField2.getText(), 
                         jTextArea1.getText()
                 );
-                JOptionPane.showMessageDialog(null, "Kontak Penting berhasil ditambahkan");
+                JOptionPane.showMessageDialog(null, "Laporan berhasil ditambahkan");
             } else {
                 this.laporan.setJudul(jTextField1.getText());
                 this.laporan.setAlamat(jTextField2.getText());
                 this.laporan.setDeskripsi(jTextArea1.getText());
                 app.editLaporan(laporan);
-                JOptionPane.showMessageDialog(null, "Kontak Penting berhasil diubah");
+                JOptionPane.showMessageDialog(null, "Laporan berhasil diubah");
             }
             if (this.forum != null) {
                 forum.refreshList();
