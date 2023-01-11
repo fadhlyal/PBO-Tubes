@@ -6,6 +6,8 @@
 package laporaja;
 
 import java.sql.*;
+import java.util.*;
+import model.*;
 /**
  *
  * @author Rieza
@@ -75,15 +77,69 @@ public class Database {
         return found;
     }
     
-    public ResultSet getQuery(String query) {
+    public ArrayList<KontakPenting> getKontakPentingQuery() {
         this.connect();
+        ArrayList<KontakPenting> listkontak = new ArrayList<>();
         try {
-            rs = stmt.executeQuery(query);
+            rs = stmt.executeQuery("SELECT * FROM kontakpenting");
+            while (rs.next()) {
+                KontakPenting kontakPenting = new KontakPenting(
+                        rs.getInt("id"), 
+                        rs.getString("namainstansi"), 
+                        rs.getString("nomorinstansi"), 
+                        rs.getString("alamat"),
+                        rs.getString("jenisinstansi"));
+                listkontak.add(kontakPenting);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         this.disconnect();
         
-        return rs;
+        return listkontak;
+    }
+    
+    public ArrayList<Laporan> getLaporanQuery() {
+        this.connect();
+        ArrayList<Laporan> listlaporan = new ArrayList<>();
+        try {
+            rs = stmt.executeQuery("SELECT * FROM laporan");
+            while (rs.next()) {
+                Laporan laporan = new Laporan(
+                        rs.getInt("id"), 
+                        rs.getInt("user_id"), 
+                        rs.getString("judul"), 
+                        rs.getString("alamat"), 
+                        rs.getString("deskripsi"));
+                listlaporan.add(laporan);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        this.disconnect();
+        
+        return listlaporan;
+    }
+    
+    public User getUserQuery(String email, String password) {
+        this.connect();
+        User user = null;
+        try {
+            rs = stmt.executeQuery("SELECT * FROM user WHERE email='"+email+"' AND password='"+password+"'");
+            if (rs.next()) {
+                user = new User(
+                        rs.getInt("id"),
+                        rs.getString("firstname"),
+                        rs.getString("lastname"),
+                        rs.getString("nomorhp"),
+                        rs.getString("email"),
+                        rs.getString("password"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        this.disconnect();
+        
+        return user;
     }
 }

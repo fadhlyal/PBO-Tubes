@@ -29,25 +29,17 @@ public class Application {
                 + firstname + "','"
                 + lastname + "','"
                 + nomorhp + "','"
-                + email + "'"
-                + password + "','");
+                + email + "','"
+                + password + "')");
     }
     
-    public void login(String email, String password) {
-        try {
-            ResultSet rs = db.getQuery("SELECT FROM user WHERE email='"+email+"',password='"+password+"'");
-            if (rs.next()) {
-                this.user = new User(
-                        rs.getInt("id"),
-                        rs.getString("firstname"),
-                        rs.getString("lastname"),
-                        rs.getString("nomorhp"),
-                        rs.getString("email"),
-                        rs.getString("password"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public boolean login(String email, String password) {
+        boolean attempt = false;
+        this.user = db.getUserQuery(email, password);
+        if (this.check()) {
+            attempt = true;
         }
+        return attempt;
     }
     
     public void logout() {
@@ -69,22 +61,12 @@ public class Application {
         return this.user;
     }
     
+    public boolean check() {
+        return this.user != null;
+    }
+    
     public void refreshLaporan() {
-        this.listlaporan = new ArrayList<>();
-        try {
-            ResultSet rs = db.getQuery("SELECT * FROM laporan");
-            while (rs.next()) {
-                Laporan laporan = new Laporan(
-                        rs.getInt("id"), 
-                        rs.getInt("user_id"), 
-                        rs.getString("judul"), 
-                        rs.getString("alamat"), 
-                        rs.getString("deskripsi"));
-                listlaporan.add(laporan);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        this.listlaporan = db.getLaporanQuery();
     }
     
     public void tambahLaporan(String judul, String alamat, String deskripsi) {
@@ -115,21 +97,7 @@ public class Application {
     }
     
     public void refreshKontakPenting() {
-        this.listkontakpenting = new ArrayList<>();
-        try {
-            ResultSet rs = db.getQuery("SELECT * FROM kontakpenting");
-            while (rs.next()) {
-                KontakPenting kontakPenting = new KontakPenting(
-                        rs.getInt("id"), 
-                        rs.getString("namainstansi"), 
-                        rs.getString("nomorinstansi"), 
-                        rs.getString("alamat"),
-                        rs.getString("jenisinstansi"));
-                listkontakpenting.add(kontakPenting);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        this.listkontakpenting = db.getKontakPentingQuery();
     }
     
     public void tambahKontakPenting(String namainstansi, String nomorinstansi, String alamat, String jenisinstansi) {

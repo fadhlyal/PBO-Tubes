@@ -5,16 +5,20 @@
  */
 package laporaja;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Kian Nailaizza
  */
 public class DaftarForm extends javax.swing.JInternalFrame {
 
+    Application app;
     /**
      * Creates new form DaftarForm
      */
-    public DaftarForm() {
+    public DaftarForm(Application app) {
+        this.app = app;
         initComponents();
     }
 
@@ -56,7 +60,6 @@ public class DaftarForm extends javax.swing.JInternalFrame {
             }
         });
 
-        jPasswordField1.setText("jPasswordField1");
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
@@ -65,6 +68,11 @@ public class DaftarForm extends javax.swing.JInternalFrame {
 
         jButton1.setBackground(new java.awt.Color(145, 32, 32));
         jButton1.setText("Daftar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Kata Sandi :");
 
@@ -78,6 +86,11 @@ public class DaftarForm extends javax.swing.JInternalFrame {
         jLabel4.setText("jLabel1");
 
         jButton2.setText("Kembali");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,6 +164,22 @@ public class DaftarForm extends javax.swing.JInternalFrame {
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String firstname, lastname, nomorhp, email, password;
+        firstname = jTextField1.getText();
+        lastname = jTextField2.getText();
+        nomorhp = jTextField3.getText();
+        email = jTextField4.getText();
+        password = jPasswordField1.getText();
+        app.registrasi(firstname, lastname, nomorhp, email, password);
+        JOptionPane.showMessageDialog(null, "Registrasi berhasil!");
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

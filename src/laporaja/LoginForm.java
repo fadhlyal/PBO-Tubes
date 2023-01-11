@@ -13,11 +13,13 @@ import javax.swing.JOptionPane;
  */
 public class LoginForm extends javax.swing.JInternalFrame {
 
+    Application app;
     /**
      * Creates new form LoginForm
      */
-    public LoginForm() {
+    public LoginForm(Application app) {
         initComponents();
+        this.app = app;
     }
 
     /**
@@ -53,8 +55,6 @@ public class LoginForm extends javax.swing.JInternalFrame {
             }
         });
 
-        passwordTxt.setText("jPasswordField1");
-
         jLabel4.setText("Kata Sandi :");
 
         loginButton.setBackground(new java.awt.Color(165, 8, 8));
@@ -65,10 +65,14 @@ public class LoginForm extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Train HTML\\loginimg.22.png")); // NOI18N
         jLabel1.setText("jLabel1");
 
         jButton1.setText("Kembali");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(165, 8, 8));
         jButton2.setText("Daftar");
@@ -135,11 +139,11 @@ public class LoginForm extends javax.swing.JInternalFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        String email = "admin";
-        String password = "admin";
-        if(emailTxt.getText().equals(email) && passwordTxt.getText().equals(password)){
+        String email = emailTxt.getText();
+        String password = passwordTxt.getText();
+        if(app.login(email, password)) {
             JOptionPane.showMessageDialog(null, "Login Berhasil");
-            OptionMenu optionMenu = new OptionMenu();
+            OptionMenu optionMenu = new OptionMenu(app);
             optionMenu.setVisible(true);
             this.getDesktopPane().add(optionMenu);
             this.dispose();
@@ -147,6 +151,10 @@ public class LoginForm extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Email / Password Salah");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

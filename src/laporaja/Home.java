@@ -12,12 +12,15 @@ import javax.swing.JOptionPane;
  * @author Kian Nailaizza
  */
 public class Home extends javax.swing.JFrame {
-
+    
+    Application app;
     /**
      * Creates new form Home
      */
-    public Home() {
+    public Home(Application app) {
+        this.app = app;
         initComponents();
+        this.setTitle("LaporAja");
     }
 
     /**
@@ -69,6 +72,11 @@ public class Home extends javax.swing.JFrame {
         );
 
         btnIn.setText("Masuk / Daftar");
+        btnIn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInMouseClicked(evt);
+            }
+        });
 
         menuLogin.setText("Masuk");
         menuLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -124,16 +132,18 @@ public class Home extends javax.swing.JFrame {
     private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
         // TODO add your handling code here:
         desktopPane.removeAll();
-        LoginForm loginForm = new LoginForm();
+        LoginForm loginForm = new LoginForm(app);
         loginForm.setVisible(true);
         desktopPane.add(loginForm);
+        this.app.logout();
         menuLogout.setEnabled(false);
         menuLogin.setEnabled(true);
+        menuDaftar.setEnabled(true);
     }//GEN-LAST:event_menuLogoutActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        int pilih = JOptionPane.showConfirmDialog(null, "Keluar Aplikas?", "Konfirmasi", JOptionPane.OK_CANCEL_OPTION);
+        int pilih = JOptionPane.showConfirmDialog(null, "Keluar Aplikasi?", "Konfirmasi", JOptionPane.OK_CANCEL_OPTION);
         
         if(pilih == JOptionPane.OK_OPTION){
             System.exit(0);
@@ -145,55 +155,46 @@ public class Home extends javax.swing.JFrame {
     private void menuLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLoginActionPerformed
         // TODO add your handling code here:
         desktopPane.removeAll();
-        LoginForm loginForm = new LoginForm();
+        LoginForm loginForm = new LoginForm(app);
         loginForm.setVisible(true);
         desktopPane.add(loginForm);
         menuLogin.setEnabled(false);
-        menuLogout.setEnabled(true);
+        menuDaftar.setEnabled(true);
+        if (app.check()) {
+            menuLogout.setEnabled(true);
+        } else {
+            menuLogout.setEnabled(false);
+        }
     }//GEN-LAST:event_menuLoginActionPerformed
 
     private void menuDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDaftarActionPerformed
         // TODO add your handling code here:
         desktopPane.removeAll();
-        DaftarForm daftarForm = new DaftarForm();
+        DaftarForm daftarForm = new DaftarForm(app);
         daftarForm.setVisible(true);
         desktopPane.add(daftarForm);
+        menuDaftar.setEnabled(false);
+        menuLogin.setEnabled(true);
+        if (app.check()) {
+            menuLogout.setEnabled(true);
+        } else {
+            menuLogout.setEnabled(false);
+        }
     }//GEN-LAST:event_menuDaftarActionPerformed
+
+    private void btnInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInMouseClicked
+        if (app.check()) {
+            menuLogin.setEnabled(false);
+            menuLogout.setEnabled(true);
+            menuDaftar.setEnabled(false);
+        } else {
+            menuLogout.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnInMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Home().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu btnIn;

@@ -44,6 +44,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Masuk / Daftar"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnInMouseClicked"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuLogin">
               <Properties>
