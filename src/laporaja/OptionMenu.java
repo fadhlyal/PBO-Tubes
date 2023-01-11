@@ -30,6 +30,7 @@ public class OptionMenu extends javax.swing.JInternalFrame {
         btnLapor = new javax.swing.JButton();
         btnForum = new javax.swing.JButton();
         btnTelepon = new javax.swing.JButton();
+        btnProfil = new javax.swing.JButton();
 
         setTitle("Menu");
 
@@ -54,28 +55,38 @@ public class OptionMenu extends javax.swing.JInternalFrame {
             }
         });
 
+        btnProfil.setText("Profile");
+        btnProfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProfilActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(208, 208, 208)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnForum, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLapor, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addGap(201, 201, 201)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTelepon, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(btnForum, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(btnLapor, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(btnProfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addComponent(btnProfil)
+                .addGap(18, 18, 18)
                 .addComponent(btnLapor)
                 .addGap(18, 18, 18)
                 .addComponent(btnForum)
                 .addGap(18, 18, 18)
                 .addComponent(btnTelepon)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addGap(87, 87, 87))
         );
 
         pack();
@@ -106,10 +117,19 @@ public class OptionMenu extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnTeleponActionPerformed
 
+    private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
+        // TODO add your handling code here:
+        ProfilePage profilePage = new ProfilePage();
+        profilePage.setVisible(true);
+        this.getDesktopPane().add(profilePage);
+        this.dispose();
+    }//GEN-LAST:event_btnProfilActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnForum;
     private javax.swing.JButton btnLapor;
+    private javax.swing.JButton btnProfil;
     private javax.swing.JButton btnTelepon;
     // End of variables declaration//GEN-END:variables
 }
