@@ -108,7 +108,7 @@ public class OptionMenu extends javax.swing.JInternalFrame {
 
     private void btnLaporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaporActionPerformed
         // TODO add your handling code here:
-        LaporForm laporForm = new LaporForm();
+        LaporForm laporForm = new LaporForm(app);
         laporForm.setVisible(true);
         this.getDesktopPane().add(laporForm);
         this.toBack();
@@ -126,16 +126,16 @@ public class OptionMenu extends javax.swing.JInternalFrame {
 
     private void btnTeleponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeleponActionPerformed
         // TODO add your handling code here:
-        TeleponForm teleponForm = new TeleponForm(app);
-        teleponForm.setVisible(true);
-        this.getDesktopPane().add(teleponForm);
+        Telepon telepon = new Telepon(app);
+        telepon.setVisible(true);
+        this.getDesktopPane().add(telepon);
         this.toBack();
-        teleponForm.toFront();
+        telepon.toFront();
     }//GEN-LAST:event_btnTeleponActionPerformed
 
     private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
         // TODO add your handling code here:
-        ProfilePage profilePage = new ProfilePage();
+        ProfilePage profilePage = new ProfilePage(app);
         profilePage.setVisible(true);
         this.getDesktopPane().add(profilePage);
         this.toBack();

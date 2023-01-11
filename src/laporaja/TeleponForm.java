@@ -5,6 +5,8 @@
  */
 package laporaja;
 
+import javax.swing.JOptionPane;
+import model.*;
 /**
  *
  * @author Kian Nailaizza
@@ -12,15 +14,40 @@ package laporaja;
 public class TeleponForm extends javax.swing.JInternalFrame {
 
     Application app;
-    
+    Telepon telepon;
+    KontakPenting kontak;
     /**
      * Creates new form TeleponForm
      */
-    public TeleponForm(Application app) {
+    public TeleponForm(Application app, Telepon telepon) {
         this.app = app;
+        this.telepon = telepon;
         initComponents();
+        jRadioButton1.setActionCommand("Rumah Sakit");
+        jRadioButton2.setActionCommand("Kantor Polisi");
+        jRadioButton3.setActionCommand("Kantor Pemadam");
     }
-
+    
+    public TeleponForm(Application app, Telepon telepon, KontakPenting kontak) {
+        this.app = app;
+        this.telepon = telepon;
+        this.kontak = kontak;
+        initComponents();
+        jTextField1.setText(kontak.getNamainstansi());
+        jTextField2.setText(kontak.getNomorinstansi());
+        jTextField3.setText(kontak.getAlamat());
+        if (kontak.getJenisinstansi().equals("Rumah Sakit")) {
+            jRadioButton1.setSelected(true);
+        } else if (kontak.getJenisinstansi().equals("Kantor Polisi")) {
+            jRadioButton2.setSelected(true);
+        } else {
+            jRadioButton3.setSelected(true);
+        }
+        jRadioButton1.setActionCommand("Rumah Sakit");
+        jRadioButton2.setActionCommand("Kantor Polisi");
+        jRadioButton3.setActionCommand("Kantor Pemadam");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,6 +57,7 @@ public class TeleponForm extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -93,6 +121,7 @@ public class TeleponForm extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Alamat :");
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Rumah Sakit");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +129,7 @@ public class TeleponForm extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Polisi");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,10 +137,16 @@ public class TeleponForm extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText("Pemadam");
 
         jButton1.setBackground(new java.awt.Color(0, 51, 255));
         jButton1.setText("Kirim");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -210,8 +246,30 @@ public class TeleponForm extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (this.kontak == null) {
+            app.tambahKontakPenting(
+                    jTextField1.getText(),
+                    jTextField2.getText(),
+                    jTextField3.getText(),
+                    buttonGroup1.getSelection().getActionCommand()
+            );
+            JOptionPane.showMessageDialog(null, "Kontak Penting berhasil ditambahkan");        
+        } else {
+            this.kontak.setNamainstansi(jTextField1.getText());
+            this.kontak.setNomorinstansi(jTextField2.getText());
+            this.kontak.setAlamat(jTextField3.getText());
+            this.kontak.setJenisinstansi(buttonGroup1.getSelection().getActionCommand());
+            app.editKontakPenting(this.kontak);
+            JOptionPane.showMessageDialog(null, "Kontak Penting berhasil diubah");   
+        }
+        telepon.refreshList();
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

@@ -69,12 +69,13 @@ public class Application {
         this.listlaporan = db.getLaporanQuery();
     }
     
+    
     public void tambahLaporan(String judul, String alamat, String deskripsi) {
         db.insertQuery("INSERT INTO laporan VALUES(NULL,'"
                 + this.getUser().getId() + "','"
                 + judul + "','"
                 + alamat + "','"
-                + deskripsi + "'");
+                + deskripsi + "')");
         this.refreshLaporan();
     }
     
@@ -96,6 +97,16 @@ public class Application {
         return this.listlaporan;
     }
     
+    public ArrayList<Laporan> getUserLaporan() {
+        ArrayList<Laporan> arruserlaporan = new ArrayList<>();
+        for (int i = 0;i<this.listlaporan.size();i++) {
+            if (this.listlaporan.get(i).getUser_id() == this.getUser().getId()) {
+                arruserlaporan.add(this.listlaporan.get(i));
+            }
+        }
+        return arruserlaporan;
+    }
+    
     public void refreshKontakPenting() {
         this.listkontakpenting = db.getKontakPentingQuery();
     }
@@ -105,7 +116,7 @@ public class Application {
                 + namainstansi + "','"
                 + nomorinstansi + "','"
                 + alamat + "','"
-                + jenisinstansi + "'");
+                + jenisinstansi + "')");
         this.refreshKontakPenting();
     }
     

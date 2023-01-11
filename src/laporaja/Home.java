@@ -20,6 +20,7 @@ public class Home extends javax.swing.JFrame {
     public Home(Application app) {
         this.app = app;
         initComponents();
+        this.setSize(1000, 750);
         this.setTitle("LaporAja");
     }
 

@@ -121,6 +121,28 @@ public class Database {
         return listlaporan;
     }
     
+    public ArrayList<Laporan> getUserLaporanQuery(int id) {
+        this.connect();
+        ArrayList<Laporan> listlaporan = new ArrayList<>();
+        try {
+            rs = stmt.executeQuery("SELECT * FROM laporan WHERE user_id="+id);
+            while (rs.next()) {
+                Laporan laporan = new Laporan(
+                        rs.getInt("id"), 
+                        rs.getInt("user_id"), 
+                        rs.getString("judul"), 
+                        rs.getString("alamat"), 
+                        rs.getString("deskripsi"));
+                listlaporan.add(laporan);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        this.disconnect();
+        
+        return listlaporan;
+    }
+    
     public User getUserQuery(String email, String password) {
         this.connect();
         User user = null;
