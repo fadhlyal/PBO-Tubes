@@ -5,6 +5,7 @@
  */
 package laporaja;
 
+import Controller.Application;
 import javax.swing.JOptionPane;
 
 /**
@@ -48,12 +49,6 @@ public class LoginForm extends javax.swing.JInternalFrame {
         jLabel2.setText("Masuk");
 
         jLabel3.setText("Email :");
-
-        emailTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTxtActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("Kata Sandi :");
 
@@ -126,22 +121,22 @@ public class LoginForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailTxtActionPerformed
-
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         String email = emailTxt.getText();
         String password = passwordTxt.getText();
-        if(app.login(email, password)) {
-            JOptionPane.showMessageDialog(null, "Login Berhasil");
-            OptionMenu optionMenu = new OptionMenu(app);
-            optionMenu.setVisible(true);
-            this.getDesktopPane().add(optionMenu);
-            this.dispose();
+        if (email.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Silahkan isi form terlebih dahulu");
         } else {
-            JOptionPane.showMessageDialog(null, "Email / Password Salah");
+            if(app.login(email, password)) {
+                JOptionPane.showMessageDialog(null, "Login Berhasil");
+                OptionMenu optionMenu = new OptionMenu(app);
+                optionMenu.setVisible(true);
+                this.getDesktopPane().add(optionMenu);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Email / Password Salah");
+            }
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 

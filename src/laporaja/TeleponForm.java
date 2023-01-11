@@ -5,6 +5,7 @@
  */
 package laporaja;
 
+import Controller.Application;
 import javax.swing.JOptionPane;
 import model.*;
 /**
@@ -247,24 +248,29 @@ public class TeleponForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (this.kontak == null) {
-            app.tambahKontakPenting(
-                    jTextField1.getText(),
-                    jTextField2.getText(),
-                    jTextField3.getText(),
-                    buttonGroup1.getSelection().getActionCommand()
-            );
-            JOptionPane.showMessageDialog(null, "Kontak Penting berhasil ditambahkan");        
+        if (jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty() ||
+                jTextField3.getText().isEmpty() || buttonGroup1.getSelection() == null) {
+            JOptionPane.showMessageDialog(null, "Silahkan isi form terlebih dahulu");
         } else {
-            this.kontak.setNamainstansi(jTextField1.getText());
-            this.kontak.setNomorinstansi(jTextField2.getText());
-            this.kontak.setAlamat(jTextField3.getText());
-            this.kontak.setJenisinstansi(buttonGroup1.getSelection().getActionCommand());
-            app.editKontakPenting(this.kontak);
-            JOptionPane.showMessageDialog(null, "Kontak Penting berhasil diubah");   
+            if (this.kontak == null) {
+                app.tambahKontakPenting(
+                        jTextField1.getText(),
+                        jTextField2.getText(),
+                        jTextField3.getText(),
+                        buttonGroup1.getSelection().getActionCommand()
+                );
+                JOptionPane.showMessageDialog(null, "Kontak Penting berhasil ditambahkan");        
+            } else {
+                this.kontak.setNamainstansi(jTextField1.getText());
+                this.kontak.setNomorinstansi(jTextField2.getText());
+                this.kontak.setAlamat(jTextField3.getText());
+                this.kontak.setJenisinstansi(buttonGroup1.getSelection().getActionCommand());
+                app.editKontakPenting(this.kontak);
+                JOptionPane.showMessageDialog(null, "Kontak Penting berhasil diubah");   
+            }
+            telepon.refreshList();
+            this.dispose();
         }
-        telepon.refreshList();
-        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

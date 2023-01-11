@@ -5,6 +5,8 @@
  */
 package laporaja;
 
+import Controller.Application;
+
 /**
  *
  * @author Kian Nailaizza

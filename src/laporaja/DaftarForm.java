@@ -5,6 +5,7 @@
  */
 package laporaja;
 
+import Controller.Application;
 import javax.swing.JOptionPane;
 
 /**
@@ -53,18 +54,6 @@ public class DaftarForm extends javax.swing.JInternalFrame {
         jLabel2.setText("Buat Akun Baru");
 
         jLabel3.setText("Nama Depan :");
-
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(145, 32, 32));
         jButton1.setText("Daftar");
@@ -157,14 +146,6 @@ public class DaftarForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String firstname, lastname, nomorhp, email, password;
         firstname = jTextField1.getText();
@@ -172,9 +153,13 @@ public class DaftarForm extends javax.swing.JInternalFrame {
         nomorhp = jTextField3.getText();
         email = jTextField4.getText();
         password = jPasswordField1.getText();
-        app.registrasi(firstname, lastname, nomorhp, email, password);
-        JOptionPane.showMessageDialog(null, "Registrasi berhasil!");
-        this.dispose();
+        if (firstname.isEmpty() || lastname.isEmpty() || nomorhp.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Silahkan isi form terlebih dahulu");
+        } else {
+            app.registrasi(firstname, lastname, nomorhp, email, password);
+            JOptionPane.showMessageDialog(null, "Registrasi berhasil!");
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

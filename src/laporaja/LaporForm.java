@@ -6,6 +6,7 @@
 
 package laporaja;
 
+import Controller.Application;
 import javax.swing.JOptionPane;
 import model.*;
 /**
@@ -215,24 +216,29 @@ public class LaporForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (this.laporan == null) {
-            app.tambahLaporan(
-                    jTextField1.getText(), 
-                    jTextField2.getText(), 
-                    jTextArea1.getText()
-            );
-            JOptionPane.showMessageDialog(null, "Kontak Penting berhasil ditambahkan");
+        if (jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty() ||
+                jTextArea1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Silahkan isi form terlebih dahulu");
         } else {
-            this.laporan.setJudul(jTextField1.getText());
-            this.laporan.setAlamat(jTextField2.getText());
-            this.laporan.setDeskripsi(jTextArea1.getText());
-            app.editLaporan(laporan);
-            JOptionPane.showMessageDialog(null, "Kontak Penting berhasil diubah");
+            if (this.laporan == null) {
+                app.tambahLaporan(
+                        jTextField1.getText(), 
+                        jTextField2.getText(), 
+                        jTextArea1.getText()
+                );
+                JOptionPane.showMessageDialog(null, "Kontak Penting berhasil ditambahkan");
+            } else {
+                this.laporan.setJudul(jTextField1.getText());
+                this.laporan.setAlamat(jTextField2.getText());
+                this.laporan.setDeskripsi(jTextArea1.getText());
+                app.editLaporan(laporan);
+                JOptionPane.showMessageDialog(null, "Kontak Penting berhasil diubah");
+            }
+            if (this.forum != null) {
+                forum.refreshList();
+            }
+            this.dispose();
         }
-        if (this.forum != null) {
-            forum.refreshList();
-        }
-        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

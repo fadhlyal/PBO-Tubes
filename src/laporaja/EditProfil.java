@@ -5,6 +5,7 @@
  */
 package laporaja;
 
+import Controller.Application;
 import javax.swing.JOptionPane;
 import model.*;
 /**
@@ -139,13 +140,18 @@ public class EditProfil extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        user.setFirstname(jTextField1.getText());
-        user.setLastname(jTextField2.getText());
-        user.setNomorhp(jTextField3.getText());
-        app.editUser(user);
-        profil.refreshForm();
-        JOptionPane.showMessageDialog(null, "Profil berhasil diubah!");
-        this.dispose();
+        if (jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty() ||
+                jTextField3.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
+        } else {
+            user.setFirstname(jTextField1.getText());
+            user.setLastname(jTextField2.getText());
+            user.setNomorhp(jTextField3.getText());
+            app.editUser(user);
+            profil.refreshForm();
+            JOptionPane.showMessageDialog(null, "Profil berhasil diubah!");
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

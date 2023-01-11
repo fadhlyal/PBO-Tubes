@@ -5,6 +5,7 @@
  */
 package laporaja;
 
+import Controller.Application;
 import javax.swing.JOptionPane;
 
 /**

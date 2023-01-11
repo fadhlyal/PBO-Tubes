@@ -5,6 +5,7 @@
  */
 package laporaja;
 
+import Controller.Application;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import model.Laporan;
