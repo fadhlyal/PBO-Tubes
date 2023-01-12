@@ -13,7 +13,7 @@ import model.*;
  * @author Rieza
  */
 public class Database {
-    static final String DB_URL = "jdbc:mysql://localhost:3306/dbtest";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/laporajapbo";
     static final String DB_USER = "root";
     static final String DB_PASS = "";
     static Connection conn;
